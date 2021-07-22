@@ -101,6 +101,10 @@ module.exports = {
       additionalLinks: {
         "Data": "https://docs.google.com/spreadsheets/d/1Ot8C6djwjiUK204VCdaUrSa1IoiTvQneqmiEylq134g",
         "Rank-up Objectives": "https://soseido.carrd.co",
+        "White Weaver Shop": "https://whiteweaver.carrd.co",
+        "Cotton Candy Ca-fey Shop": "https://cottoncandycafey.carrd.co/",
+        "Kinzoki Torii Gacha": "https://docs.google.com/document/d/1M2BVlMDzMrwE8NkXEgvr6YMxZ6XVXdxG4mRaVqnSnsk/",
+        "The Pigpen Shop": "https://docs.google.com/document/d/1xEfdqemHpvjU4m4oXCcT_sk52Lxp5cbtcl9_uBgffQM/",
       }
     },
   },
