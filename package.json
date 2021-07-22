@@ -17,7 +17,7 @@
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.1",
     "vue-toasted": "^1.1.28",
-    "xlsx": "^0.16.1"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
