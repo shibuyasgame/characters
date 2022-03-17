@@ -168,8 +168,6 @@ module.exports = {
         "Data": "https://docs.google.com/spreadsheets/d/1Bjep6T34qtzCdr3jrBrZIHHm-mYJek3YrL0GTR3zXwY/edit?usp=sharing"
         "Seoul Survival Guide": "https://docs.google.com/document/d/1olbrE6_biujp3K7OU5-vGdLbtYVQR9rodqdXgj_5N3Q/edit?usp=sharing"
       },
-      legacyPinImages: true
-      }
 
     },
   },
