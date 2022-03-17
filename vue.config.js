@@ -14,7 +14,8 @@ module.exports = {
         W19: "Week 19",
         midtown: "Midtown, Manhattan",
         W20: "Week 20",
-        teyvat: "Teyvat/Genshin Weekend"
+        teyvat: "Teyvat/Genshin Weekend",
+        seoul3: "Seoul Weekend (3)"
       }
     },
     "Test Page": {
@@ -152,6 +153,24 @@ module.exports = {
         Data: "https://docs.google.com/spreadsheets/d/1WQhPYz4bQEvuQbmg41DwIUVanwX56wDzQV2Q5N0YDgI/",
         "Teyvat Info": "https://docs.google.com/document/d/1hhYn85pWp3rHYVaVOePE88e9wOSiz1K7j6x796uXICE/edit",
       },
+     },
+     "Seoul Weekend 3": {
+      entry: "src/main.js",
+      title: "Seoul Weekend (3) Characters",
+      filename: "seoul3/index.html",
+      sheetKeys: [
+        "2PACX-1vSUdj3RuBLCoB0uYek-GOehP3I8zeRWxys8UhOxDAxI8Bif0WPNuuvboCgm4jKx9BlXPmChLPv2yQFK"
+      ],       
+      overrides: {
+        Yen: { name: "₩" }
+      },
+      additionalLinks: {
+        "Data": "https://docs.google.com/spreadsheets/d/1Bjep6T34qtzCdr3jrBrZIHHm-mYJek3YrL0GTR3zXwY/edit?usp=sharing"
+        "Seoul Survival Guide": "https://docs.google.com/document/d/1olbrE6_biujp3K7OU5-vGdLbtYVQR9rodqdXgj_5N3Q/edit?usp=sharing"
+      },
+      legacyPinImages: true
+      }
+
     },
   },
 };
