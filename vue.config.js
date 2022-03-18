@@ -154,7 +154,7 @@ module.exports = {
         "Teyvat Info": "https://docs.google.com/document/d/1hhYn85pWp3rHYVaVOePE88e9wOSiz1K7j6x796uXICE/edit",
       }
      },
-     "Seoul Weekend 3": {
+    "Seoul Weekend 3": {
       entry: "src/main.js",
       title: "Seoul Weekend (3) Characters",
       filename: "seoul3/index.html",
@@ -165,7 +165,7 @@ module.exports = {
         Yen: { name: "₩" }
       },
       additionalLinks: {
-        "Data": "https://docs.google.com/spreadsheets/d/1Bjep6T34qtzCdr3jrBrZIHHm-mYJek3YrL0GTR3zXwY/edit?usp=sharing"
+        "Data": "https://docs.google.com/spreadsheets/d/1Bjep6T34qtzCdr3jrBrZIHHm-mYJek3YrL0GTR3zXwY/edit?usp=sharing",
         "Seoul Survival Guide": "https://docs.google.com/document/d/1olbrE6_biujp3K7OU5-vGdLbtYVQR9rodqdXgj_5N3Q/edit?usp=sharing"
       },
     },
