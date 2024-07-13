@@ -15,7 +15,8 @@ module.exports = {
         midtown: "Midtown, Manhattan",
         W20: "Week 20",
         teyvat: "Teyvat/Genshin Weekend",
-        seoul3: "Seoul Weekend (3)"
+        seoul3: "Seoul Weekend (3)",
+        W21: "Week 21"
       }
     },
     "Test Page": {
@@ -167,6 +168,14 @@ module.exports = {
       additionalLinks: {
         "Data": "https://docs.google.com/spreadsheets/d/1Bjep6T34qtzCdr3jrBrZIHHm-mYJek3YrL0GTR3zXwY/edit?usp=sharing",
         "Seoul Survival Guide": "https://docs.google.com/document/d/1olbrE6_biujp3K7OU5-vGdLbtYVQR9rodqdXgj_5N3Q/edit?usp=sharing"
+      },
+      "Week 21 AU": {
+        entry: "src/main.js",
+        title: "Week 21 AU Characters",
+        filename: "Week21/index.html",
+        sheetKeys: [
+          "2PACX-1vTrc77UBxi06DAQS0mYxMkVf9E-I4Q8z_JwJ3K4QcRMQuVR5QrVOPY6CwUQqMdZIbv6EQos"
+        ],
       },
     },
   },
