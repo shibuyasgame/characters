@@ -21,6 +21,17 @@
   </noscript>
   <div id="app">
     <router-view></router-view>
+    <div class="clear text-smaller popover-container">
+      <font-awesome-icon class="icon" :icon="['fas', 'info-circle']"
+        :style="{ color: 'var(--border-color)' }"></font-awesome-icon>
+      <div class="popover">
+        Changes may take up to five minutes to reflect in the sheet.
+        <br />Please report any issues to #hacklab or #meta in the TRG
+        Discord.
+        <br />
+        <span class="text-smaller">Site creds: Xan (@xankuroi).</span>
+      </div>
+    </div>
   </div>
   <!-- built files will be auto injected -->
 </body>
