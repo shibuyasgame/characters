@@ -39,8 +39,14 @@
 
 <script>
 export default {
+  props: {
+    week: {
+      type: String,
+      required: true
+    }
+  },
   data() {
-    return { show: false, additionalLinks: {} };
+    return { show: false };
   },
   methods: {
     toggleTheme() {
@@ -48,9 +54,11 @@ export default {
       document.body.setAttribute("data-theme", localStorage.theme);
     },
   },
-  mounted() {
-    this.additionalLinks = JSON.parse(window.additionalLinks);
-  },
+  computed: {
+    additionalLinks() {
+      return this.$settings[this.week].additionalLinks || [];
+    }
+  }
 };
 </script>
 

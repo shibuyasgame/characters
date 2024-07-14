@@ -1,7 +1,8 @@
-import Vue from "vue";
+import Vue from "vue/dist/vue.js";
+import VueRouter from 'vue-router';
 import VueClipboard from "vue-clipboard2";
 import Toasted from "vue-toasted";
-import App from "./App";
+import settings from '../settings.js';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faAddressCard, // Info card
@@ -28,7 +29,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import CharacterSheets from './pages/CharacterSheets.vue';
+import Index from './pages/Index.vue';
 
+Vue.use(VueRouter);
 Vue.use(VueClipboard);
 Vue.use(Toasted);
 library.add(
@@ -57,9 +61,16 @@ library.add(
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.config.productionTip = false;
-Vue.prototype.$overrides = JSON.parse(window.overrides);
-Vue.prototype.$legacyItemImages = window.legacyItemImages;
+Vue.prototype.$settings = settings;
+
+const routes = [
+  { path: '/', name: 'Index', component: Index },
+  { path: '/:week', props: true, component: CharacterSheets },
+  { path: '*', redirect: '/' }
+]
+const router = new VueRouter({ routes, mode: 'history' });
 
 new Vue({
-  render: (h) => h(App),
+  router
 }).$mount("#app");
+

@@ -1,7 +1,7 @@
 <template>
   <simplebar class="text-small flex-col">
     <div class="flex">
-      <template v-if="isPlayer(data) && !$overrides.hidePlayerBlock">
+      <template v-if="isPlayer(data) && !hidePlayerBlock">
         <div class="flex block">
           <div class="block">
             <h4 :style="data.Color">Entry Fee</h4>
@@ -42,7 +42,16 @@ export default {
       type: Object,
       required: true,
     },
+    week: {
+      type: String,
+      required: true
+    }
   },
+  computed: {
+    hidePlayerBlock() {
+      return this.$settings[this.week].overrides?.hidePlayerBlock;
+    }
+  }
 };
 </script>
 

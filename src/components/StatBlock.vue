@@ -49,6 +49,10 @@ export default {
     data: {
       type: Object,
       required: true
+    },
+    week: {
+      type: String,
+      required: true
     }
   },
   computed: {
@@ -63,26 +67,34 @@ export default {
       return { color: "green" };
     },
     names() {
-      return {
-        HP: this.$overrides?.HP?.name ?? "HP",
-        ATK: this.$overrides?.ATK?.name ?? "ATK",
-        DEF: this.$overrides?.DEF?.name ?? "DEF",
-        SYNC: this.$overrides?.SYNC?.name ?? "SYNC",
-        PP: this.$overrides?.PP?.name ?? "PP",
-        BRV: this.$overrides?.BRV?.name ?? "BRV",
-        Yen: this.$overrides?.Yen?.name ?? "¥"
-      }
+      const overrides = this.getOverrides('name');
+      Object.keys(overrides).forEach((key) => {
+        overrides[key] = overrides[key] ?? key;
+      });
+
+      return overrides;
     },
     hide() {
-      return {
-        HP: this.$overrides?.HP?.hide,
-        ATK: this.$overrides?.ATK?.hide,
-        DEF: this.$overrides?.DEF?.hide,
-        SYNC: this.$overrides?.SYNC?.hide,
-        PP: this.$overrides?.PP?.hide,
-        BRV: this.$overrides?.BRV?.hide,
-        Yen: this.$overrides?.Yen?.hide,
-      }
+      return this.getOverrides('hide');
+    }
+  },
+  methods: {
+    getOverrides(setting) {
+      const overrides = {};
+      const statNames = [
+        'HP',
+        'ATK',
+        'DEF',
+        'SYNC',
+        'PP',
+        'BRV',
+        'Yen'
+      ]
+      statNames.forEach((name) => {
+        overrides[name] = this.$settings[this.week].overrides?.[name]?.[setting];
+      });
+
+      return overrides;
     }
   }
 };

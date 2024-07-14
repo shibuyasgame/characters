@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Menu />
+    <Menu :week="week" />
     <div class="top-row text-smaller noselect">
       Show tabs:
       <div
@@ -92,6 +92,7 @@
           :data="sheet"
           :mirror="mirror"
           :key="'pp-' + index"
+          :week="week"
           @goto="handleGoto($event)"
         />
         <Profile
@@ -100,6 +101,7 @@
           :data="sheet"
           :mirror="mirror"
           :key="'pr-' + index"
+          :week="week"
         />
       </template>
     </simplebar>
@@ -127,20 +129,23 @@ export default {
     TabContent,
     simplebar,
   },
+  props: {
+    week: {
+      type: String,
+      required: true
+    }
+  },
   data() {
-    const pathTokens = window.location.pathname.split("/");
     return {
       activeIndex: -1,
-      keys: window.sheetKeys,
+      keys: [],
       sheetStatuses: [false],
       sheetsByUrl: {},
       showMenu: false,
       showPlayers: true,
       showReapers: true,
-      week: pathTokens[1] === "characters" ? pathTokens[2] : pathTokens[1],
       mirror: false,
-      reloadTimer: null,
-      version: null,
+      reloadTimer: null
     };
   },
   computed: {
@@ -187,8 +192,23 @@ export default {
       return { Color: {}, Name: "Overview" };
     },
   },
+  watch: {
+    week(newVal, oldVal) {
+      if (newVal != oldVal) {
+        document.title = this.$settings[newVal].title;
+      }
+    }
+  },
   methods: {
     checkVersion() {
+      // Only check once an hour
+      const now = Date.now();
+      if (localStorage.lastCheck) {
+        timediff = Math.abs(now - Date.parse(localStorage.lastCheck)) / 36e5;
+        if (timediff <= 1) {
+          return localStorage.version;
+        }
+      }
       return fetch(
         "https://birbot-3961.appspot.com/https://github.com/shibuyasgame/characters/commits/gh-pages"
       )
@@ -217,9 +237,10 @@ export default {
       this.checkVersion()
         .then((version) => {
           if (version) {
-            if (this.version === null) {
-              this.version = version;
-            } else if (this.version != version) {
+            if (localStorage.version === null) {
+              localStorage.version = version;
+            } else if (localStorage.version != version) {
+              localStorage.version = version;
               location.reload();
             }
           }
@@ -260,6 +281,10 @@ export default {
     },
   },
   mounted() {
+    let keyCheck = this.$settings[this.week]?.sheetKeys;
+    if (!keyCheck) { this.$router.push({ path: '/' }) }
+
+    this.keys = keyCheck;
     this.reloadData();
     if (!localStorage.activeIndices) {
       localStorage.activeIndices = "{}";

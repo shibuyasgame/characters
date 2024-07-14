@@ -45,16 +45,20 @@ export default {
       type: Object,
       required: true,
     },
+    useLegacyItemImages: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
-      publicPath: process.env.BASE_URL,
+      publicPath: import.meta.env.BASE_URL,
     };
   },
   computed: {
     url() {
       const id = this.data.ID.replace("#", "");
-      if (this.$legacyItemImages && id < 300) {
+      if (this.useLegacyItemImages && (Number(id) < 300)) {
         return this.publicPath + `threads/${id} ${this.data.Name}.png`;
       }
       if (this.data.ImgSM) {

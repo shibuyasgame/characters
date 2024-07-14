@@ -14,7 +14,7 @@
     </ul>
     <ul class="list" style="line-height:2em;">
       <li v-for="(name, slug) in weeks" :key="slug">
-        <a :href="publicPath + slug">{{ name }} Characters</a>
+        <router-link :to="'/'+slug">{{ name }} Characters</router-link>
       </li>
     </ul>
   </div>
@@ -22,12 +22,20 @@
 
 <script>
 import { publicPath } from "../components/mixins/utilities";
+
 export default {
   mixins: [publicPath],
-  props: {
-    weeks: {
-      type: Object,
-      required: true
+  data() {
+    return {
+      weeks: {}
+    }
+  },
+  beforeMount() {
+    document.title = "The Reaper's Game Character Sheets";
+    for (const key in this.$settings) {
+      if (this.$settings[key].excludeFromIndex) { continue; }
+
+      this.weeks[key] = this.$settings[key].title;
     }
   }
 };

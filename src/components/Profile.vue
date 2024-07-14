@@ -9,10 +9,16 @@
           <CharacterInfo
             class="flex-col flex-grow"
             :data="data"
+            :week="week"
             @goto="$emit('goto', data.Partner)"
           />
-          <CharacterDetails v-show="show === 'info'" class="info" :data="data" />
-          <template v-if="!isPlayer(data) || $overrides.enableNoiseBlockForPlayers">
+          <CharacterDetails
+            v-show="show === 'info'"
+            class="info"
+            :data="data"
+            :week="week"
+          />
+          <template v-if="!isPlayer(data) || enableNoiseBlockForPlayers">
             <NoiseInfo v-show="show === 'noise'" class="info" :data="data" :mirror="mirror" />
           </template>
         </div>
@@ -24,7 +30,7 @@
             <font-awesome-icon :icon="['fas', 'sticky-note']" />
           </span>
           <span
-            v-if="!isPlayer(data) || $overrides.enableNoiseBlockForPlayers"
+            v-if="!isPlayer(data) || enableNoiseBlockForPlayers"
             class="tab"
             :class="{ active: show === 'noise' }"
             @click="show = 'noise'"
@@ -48,6 +54,7 @@
           :data="pin"
           :atk="data.ATK.total"
           :key="data.Name + 'pin' + index"
+          :useLegacyItemImages="useLegacyItemImages"
         />
       </Inventory>
       <Inventory
@@ -61,6 +68,7 @@
           v-for="thread in data.Threads.equipped"
           :data="thread"
           :key="data.Name + 'thread' + thread.ID"
+          :useLegacyItemImages="useLegacyItemImages"
         />
       </Inventory>
       <Inventory
@@ -75,6 +83,7 @@
           class="pull-left"
           :data="food"
           :key="data.Name + food.Name"
+          :useLegacyItemImages="useLegacyItemImages"
         />
       </Inventory>
       <Inventory
@@ -90,12 +99,14 @@
           :data="pin"
           :atk="data.ATK.total"
           :key="data.Name + 'pin' + pin.ID + index"
+          :useLegacyItemImages="useLegacyItemImages"
         />
         <Thread
           v-for="(thread, index) in data.Threads.unequipped"
           class="pull-left"
           :data="thread"
           :key="data.Name + 'thread' + thread.ID + index"
+          :useLegacyItemImages="useLegacyItemImages"
         />
       </Inventory>
       <Inventory v-if="data.Swag.length > 0" :showExpander="false">
@@ -145,11 +156,23 @@ export default {
       type: Boolean,
       default: false,
     },
+    week: {
+      type: String,
+      required: true
+    }
   },
   data() {
     return {
       show: false,
     };
+  },
+  computed: {
+    enableNoiseBlockForPlayers() {
+      return !!this.$settings[this.week].overrides?.enableNoiseBlockForPlayers;
+    },
+    useLegacyItemImages() {
+      return !!this.$settings[this.week].legacyItemImages;
+    }
   },
   methods: {
     handleToggle(refName, event) {

@@ -79,10 +79,14 @@ export default {
       type: String,
       default: "small",
     },
+    useLegacyItemImages: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
-      publicPath: process.env.BASE_URL,
+      publicPath: import.meta.env.BASE_URL,
     };
   },
   computed: {
@@ -99,7 +103,7 @@ export default {
       return !withIcons.includes(this.data.Name);
     },
     url() {
-      if (this.$legacyItemImages && !this.noImage) {
+      if (this.useLegacyItemImages && !this.noImage) {
         return `${this.publicPath}food/${this.data.Name.replace(/"/g, "")}.png`;
       }
       if (this.data.ImgSM) {

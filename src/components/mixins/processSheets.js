@@ -1,4 +1,4 @@
-import XLSX from "xlsx";
+import { read, utils } from "xlsx";
 
 export async function processSpreadsheet(url) {
   return fetch(url)
@@ -8,11 +8,11 @@ export async function processSpreadsheet(url) {
     })
     .then((buffer) => {
       const arrBuffer = new Uint8Array(buffer);
-      return XLSX.read(arrBuffer, { type: "array" }).Sheets;
+      return read(arrBuffer, { type: "array" }).Sheets;
     })
     .then((sheets) => {
       // Base data
-      const sheetConfig = XLSX.utils.sheet_to_json(sheets.Config);
+      const sheetConfig = utils.sheet_to_json(sheets.Config);
       const Pins = keyData(sheets.Pins);
       const Threads = keyData(sheets.Threads);
       const Food = keyData(sheets.Foods);
@@ -48,7 +48,7 @@ export async function processSpreadsheet(url) {
 
 function keyData(rawSheet) {
   let data = {};
-  XLSX.utils
+  utils
     .sheet_to_json(rawSheet)
     .filter((row) => row["Name"])
     .forEach((row) => (data[row["Name"]] = row));

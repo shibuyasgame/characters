@@ -36,7 +36,7 @@
         </div>-->
       </div>
     </div>
-    <StatBlock :data="data" />
+    <StatBlock :data="data" :week="week" />
   </div>
 </template>
 
@@ -54,6 +54,10 @@ export default {
       type: Object,
       required: true,
     },
+    week: {
+      type: String,
+      required: true
+    }
   },
 };
 </script>

@@ -9,9 +9,18 @@ Current frontend uses sheetjs to process an xlsx export of the workbook.
 1. First, make a copy of the \[TEMPLATE\] TRG: Backend (W17+). Details about setting up the spreadsheet is in that spreadsheet.
 2. Publish sheet to web (File -> Publish to the web)
 3. Take the key from the publish link (https://docs.google.com/spreadsheets/d/e/THISISTHEKEY/pubhtml)
-4. In `vue.config.js`, add the new week to the `weeks` array.
-5. In `vue.config.js`, add a new entry for the week in the `pages` object.
-6. Push changes to master
+4. In `settings.js`, add a new entry for the week at the bottom of the object.
+
+   4.1 Example (minimum data):
+
+   ```js
+   W42: {
+    title: "Week 42",
+    sheetKeys: [ "KEY(S)", "FROM", "STEP 3" ],
+   }
+   ```
+
+5. Push changes to master
 
 ## Project setup
 
@@ -22,7 +31,7 @@ npm install
 ### Compiles and hot-reloads for development
 
 ```
-npm run serve
+npm run dev
 ```
 
 ### Compiles and minifies for production
@@ -31,17 +40,21 @@ npm run serve
 npm run build
 ```
 
+### Preview production build
+
+```
+npm run preview
+```
+
 ### Lints and fixes files
 
 ```
 npm run lint
 ```
 
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 ## Changelog
+
+Pre-W21 - Migrate to using Vite and all associated changes necessary to support that.
 
 Post-W18 - Expand override options, allow for hosted item links.
 
