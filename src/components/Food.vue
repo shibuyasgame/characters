@@ -107,7 +107,7 @@ export default {
         return `${this.publicPath}food/${this.data.Name.replace(/"/g, "")}.png`;
       }
       if (this.data.ImgSM) {
-        return this.data.ImgSM;
+        return this.data.ImgSM.replace(/"/g, "");
       }
       return `${this.publicPath}food/default.png`;
     },
