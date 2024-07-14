@@ -204,7 +204,7 @@ export default {
       // Only check once an hour
       const now = Date.now();
       if (localStorage.lastCheck) {
-        timediff = Math.abs(now - Date.parse(localStorage.lastCheck)) / 36e5;
+        let timediff = Math.abs(now - Date.parse(localStorage.lastCheck)) / 36e5;
         if (timediff <= 1) {
           return localStorage.version;
         }
