@@ -15,7 +15,7 @@
       </template>
       Links
       <ul>
-        <li><a href="/">Other Weeks</a></li>
+        <li><a href="/characters/">Other Weeks</a></li>
         <li><a href="https://shibuyasgamearchives.tumblr.com">Archives</a></li>
         <li><a href="https://discord.gg/swmtaTW">Discord</a></li>
         <li><a href="https://shibuyasgame.tumblr.com">Tumblr</a></li>

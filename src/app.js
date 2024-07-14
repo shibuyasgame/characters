@@ -68,9 +68,8 @@ const routes = [
   { path: '/:week', props: true, component: CharacterSheets },
   { path: '*', redirect: '/' }
 ]
-const router = new VueRouter({ routes, mode: 'history' });
+const router = new VueRouter({ routes, base: '/characters/', mode: 'history' });
 
 new Vue({
   router
 }).$mount("#app");
-
