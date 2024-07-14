@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue2';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/characters/',
   plugins: [vue()],
   resolve: {
     // TODO: explicitly name all extensions and remove this line
