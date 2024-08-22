@@ -5,8 +5,12 @@
       <slot name="before" />
       <span :style="{'text-decoration': capped ? 'underline' : ''}">{{ total }}</span>
       <slot name="after" />
-      <span v-if="additional" class="add flex">
+      <span v-if="additional && !negative" class="add flex">
         <span class="text-smaller">▲</span>
+        {{ additional }}
+      </span>
+      <span v-if="additional && negative" class="neg flex">
+        <span class="text-smaller">▼</span>
         {{ additional }}
       </span>
     </div>
@@ -34,6 +38,9 @@ export default {
   computed: {
     additional() {
       return this.stats.total - this.stats.raw;
+    },
+    negative() {
+      return this.additional < 0;
     },
     capped() {
       return this.stats.cap && this.stats.total >= this.stats.cap;
@@ -67,6 +74,11 @@ export default {
 
 .add {
   color: green;
+  font-size: 0.8em;
+}
+
+.neg {
+  color: maroon;
   font-size: 0.8em;
 }
 </style>
