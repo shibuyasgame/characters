@@ -74,6 +74,7 @@ function processCharacterData(sheet, config, lookup) {
   // Group items by equipped
   data.Pins = groupEquip(data.Pins);
   data.Threads = groupEquip(data.Threads);
+  data.Food = data.Food.filter((datum) => datum.n > 0);
 
   // Calculate stat totals
   let eStats = equippedStats(data.Threads.equipped, data.Pronouns);
